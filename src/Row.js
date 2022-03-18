@@ -1,5 +1,6 @@
 import "./styles.css";
 import React, { useState } from "react";
+import Row1 from "./Row1";
 
 export default function Row(props) {
   const data = props.data;
@@ -32,17 +33,7 @@ export default function Row(props) {
         <td>{getTotalTransaction(data.transcationHistory)}</td>
         <td>{getTotalPoints(data.transcationHistory)}</td>
       </tr>
-      {data.transcationHistory.map((transcation) => {
-        return (
-          <tr style={{ display: open ? "" : "none" }}>
-            <td></td>
-            <td></td>
-            <td>{transcation.transcationDate}</td>
-            <td>{transcation.transcationAmount}</td>
-            <td>{getTotalPoints([transcation])}</td>
-          </tr>
-        );
-      })}
+      <Row1 data={data.transcationHistory} open={open} />
     </React.Fragment>
   );
 }
